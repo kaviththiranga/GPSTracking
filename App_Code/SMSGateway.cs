@@ -11,17 +11,27 @@ using Comm2IP;
 /// </summary>
 public class SMSGateway
 {
+    ReadMessages service ;
+
 	public SMSGateway()
 	{
-
+        service = new ReadMessages();
 	}
 
-    public static List<InboundMessage> getNewMessages() {
+    public List<InboundMessage> getNewMessages() {
 
-        return new List<InboundMessage>();
+        List<InboundMessage> list= new List<InboundMessage>();
+
+        InboundMessage[] msgList = service.DoIt();
+
+        foreach (InboundMessage msg in msgList) {
+
+            list.Add(msg);
+        }
+        return list;
     }
 
-    public static void sendMessage(string number, string msg) { 
+    public void sendMessage(string number, string msg) { 
     
     }
 }

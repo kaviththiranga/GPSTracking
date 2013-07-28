@@ -13,6 +13,8 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD_FPwPtSaAxQDF7WOSocqPEjJN7KFi74k&sensor=false">
+    </script>
 </head>
 <body>
     <form runat="server">
@@ -51,6 +53,7 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About.aspx">About</a></li>
                         <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
+                         <li><a id="A1" runat="server" href="~/ManageVehicles.aspx">Manage Vehicles</a></li>
                     </ul>
                 </nav>
             </div>
@@ -66,7 +69,10 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <p>
-                    &copy; <%: DateTime.Now.Year %> - My ASP.NET Application
+                    &copy; <%: DateTime.Now.Year %> - 
+                    Project - Low Cost Vehicle Tracking
+                    <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Iran Udayanga
                 </p>
             </div>
         </div>

@@ -1,5 +1,5 @@
 ﻿<%@ Application Language="C#" %>
-<%@ Import Namespace="LowCostVehicleTracking" %>
+<%@ Import Namespace="GPSTracking" %>
 
 <script runat="server">
 

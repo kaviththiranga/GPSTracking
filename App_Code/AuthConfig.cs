@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Membership.OpenAuth;
 
-namespace LowCostVehicleTracking
+namespace GPSTracking
 {
     public static class AuthConfig
     {

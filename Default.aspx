@@ -3,38 +3,60 @@
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <section class="featured">
         <div class="content-wrapper">
-            <hgroup class="title">
-                <h1><%: Title %>.</h1>
-                <h2>Modify this template to jump-start your ASP.NET application.</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET, visit <a href="http://asp.net" title="ASP.NET Website">http://asp.net</a>. 
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from 
-                ASP.NET. If you have any questions about ASP.NET visit 
-                <a href="http://forums.asp.net/18.aspx" title="ASP.NET Forum">our forums</a>.
-            </p>
+            
         </div>
     </section>
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h3>We suggest the following:</h3>
-    <ol class="round">
-        <li class="one">
-            <h5>Getting Started</h5>
-            ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245146">Learn more…</a>
-        </li>
-        <li class="two">
-            <h5>Add NuGet packages and jump-start your coding</h5>
-            NuGet makes it easy to install and update free libraries and tools.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245147">Learn more…</a>
-        </li>
-        <li class="three">
-            <h5>Find Web Hosting</h5>
-            You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245143">Learn more…</a>
-        </li>
-    </ol>
+      <script>
+
+
+          // Create an object containing LatLng, population.
+          var citymap = {};
+          citymap['chicago'] = {
+              center: new google.maps.LatLng(41.878113, -87.629798),
+              population: 2842518
+          };
+          citymap['newyork'] = {
+              center: new google.maps.LatLng(40.714352, -74.005973),
+              population: 8143197
+          };
+          citymap['losangeles'] = {
+              center: new google.maps.LatLng(34.052234, -118.243684),
+              population: 3844829
+          }
+          var cityCircle;
+
+          function initialize() {
+              var mapOptions = {
+                  zoom: 4,
+                  center: new google.maps.LatLng(37.09024, -95.712891),
+                  mapTypeId: google.maps.MapTypeId.TERRAIN
+              };
+
+              var map = new google.maps.Map(document.getElementById('googleMap'),
+                  mapOptions);
+
+              for (var city in citymap) {
+                  // Construct the circle for each value in citymap. We scale population by 20.
+                  var populationOptions = {
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#FF0000',
+                      fillOpacity: 0.35,
+                      map: map,
+                      center: citymap[city].center,
+                      radius: citymap[city].population / 20
+                  };
+                  cityCircle = new google.maps.Circle(populationOptions);
+              }
+          }
+
+          google.maps.event.addDomListener(window, 'load', initialize);
+
+
+    </script>
+    <div id="googleMap" style="width:900px;height:500px;"></div>
 </asp:Content>
